@@ -1,0 +1,115 @@
+{% extends 'notes/nav.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center">hello akash </h2>
+</div>
+
+<!-- ............. -->
+<div class="contaner">
+    <div class="modal fade font-weight-bold" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-weight-bold" id="signupModalTitle">SignUp Here</h5>
+            <button type="button" class="close font-weight-bold" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action= "/signup" method='post' >
+      <div class="form-group font-weight-normal">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username" required>
+      </div>
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="pass1">Choose a password</label>
+        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password" required>
+      </div>
+      <div class="form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again" required>
+      </div>
+      <div class="form-group">
+        <label >Branch</label>
+        <select name="branch" class="form-control">
+            <option value="Computer Science">Computer science</option>
+            <option value="Electronics And Communication">Electronics And Communication</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label >Are You!</label>
+        <select name="role" class="form-control">
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+        </select>
+      </div>
+     
+    
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ................................. -->
+    <!-- {% ifequal error "no" %}
+    <script>
+      alert('Logged in successfullay');
+      window.location= ("{% url 'admin_home' %}");
+    </script>
+    {% endifequal %}
+
+    {% ifequal error "yes" %}
+    <script>
+      alert('srry bhaii ');
+     
+    </script>
+    {% endifequal %} -->
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalTitle"> Admin Login Here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="login" method="POST"> {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="loginadminname" name="loginadminname" placeholder="Enter your username "required>
+      </div>
+      <div class="form-group">
+        <label for="pass">Enter your password </label>
+        <input type="password" class="form-control" id="loginadminpassword" name="loginadminpassword" placeholder="Enter your password "required>
+      </div>
+     
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+          </div>
+          <!-- .............................................. -->
+      
+
+{% endblock %}
