@@ -21,24 +21,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home </a>
+          <a class="nav-link" href="{% url 'profile' %}">Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Upload Notes</a>
+          <a class="nav-link" href="{% url 'upload_notes' %}">Upload Notes</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">View my Notes </a>
+          <a class="nav-link" href="{% url 'view_mynotes' %}">View my Notes </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="#">View All Notes </a>
+            <a class="nav-link mr-3" href="{% url 'viewallnotes' %}">View All Notes </a>
           </li>
         
           
           <div class="btn-group">
               <button type="button" class="btn btn-success" data-toggle="dropdown">Welcome {{request.user.first_name}}</button>
               <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item"> Edit Profile</a>
-                  <a href="#" class="dropdown-item">Change Password</a>
+                  <a href="{% url 'edit_profile' %}" class="dropdown-item"> Edit Profile</a>
+                  <a href="{% url 'changepassword' %}" class="dropdown-item">Change Password</a>
                   <a  href="/logout" class="dropdown-item" >Logout</a>
               </div>
           </div>

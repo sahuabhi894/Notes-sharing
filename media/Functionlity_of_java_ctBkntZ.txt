@@ -1,0 +1,116 @@
+Simple if else:-
+
+The if statement determines whether a code should be executed based on the specified condition.
+Syntax:
+ 
+
+if (condition) { 
+Statement 1; //executed if condition is true
+}
+Statement 2; //executed irrespective of the condition
+..........................................................................................................
+
+if-else-if ladder Statement:-
+
+
+
+In Java, the if-else-if ladder statement is used for testing conditions. It is used for testing one condition from multiple statements.
+
+Syntax:
+
+	
+if(condition1)
+{  
+//code for if condition1 is true  
+}
+else if(condition2)
+{  
+//code for if condition2 is true  
+}  
+else if(condition3)
+{  
+//code for if condition3 is true  
+}  
+...  
+else
+{  
+//code for all the false conditions   
+}  
+.................................................................................................................................
+
+For loop:-
+
+In Java, for loop is used for executing a part of the program again and again. When the number of execution is fixed then it is suggested to use for loop. 
+
+
+Syntax:
+
+	
+for(initialization;condition;increment/decrement)
+{  
+//statement 
+} 
+.............................................................................................................................
+
+for-each Loop:-
+
+In Java, for each loop is used for traversing array or collection. In this loop, there is no need for increment or decrement operator.
+
+	
+Syntax:
+for(Type var:array)
+{  
+//code for execution
+}  
+.................................................................................................................................
+Switch Statement:-
+
+
+In Java, the switch statement is used for executing one statement from multiple conditions. it is similar to an if-else-if ladder. In a switch statement,the expression can be of byte, short, char and int data types.
+
+Syntax:
+
+	
+switch(expression)
+{    
+case value1:    
+ 			//code for execution;    
+ 			break;  //optional  
+case value2:    
+ // code for execution
+ break;  //optional  
+......    
+......
+......
+......
+Case value n:
+// code for execution
+ break;  //optional  
+
+default:     
+ code for execution when none of the case is true;    
+}    
+...............................................................................................................................................................
+While Loop
+In Java, While loop is a control statement. It is used for iterating a part of the program several times. When the number of iteration is not fixed then while loop is used.
+
+Syntax:
+
+	
+while(condition)
+{  
+//code for execution
+}  
+...............................................................................................................................................................
+do-while loop
+In Java, the do-while loop is used to execute a part of the program again and again. If the number of iteration is not fixed then the do-while loop is used. This loop executes at least once because the loop is executed before the condition is checked.
+
+Syntax:
+
+	
+do
+{  
+//code for execution 
+}
+while(condition); 
+.....................................................................................................................................................................................................................

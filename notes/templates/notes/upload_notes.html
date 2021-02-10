@@ -1,0 +1,41 @@
+{% extends 'notes/usernav.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<h1 class="text-center">Upload notes here</h1>
+<div class="container">
+<form method='post' enctype="multipart/form-data">
+
+    <label >Branch</label>
+    <select class="form-control"  name="branch" >
+        <option value="Select Branch">Select Branch</option>
+        
+        <option value="Computer Science">Computer Science</option>
+        
+<option value="Electronics And Communication">Electronics And Communication</option>
+    </select>
+
+
+    <div class="form-group">
+      <label>Subject</label>
+      <input type="text" class="form-control"  placeholder="Enter Your Subject" name="subject" required>
+    </div>
+    <div class="form-group">
+      <label>Notes File</label>
+      <input type="file" class="form-control" name="notesfile" required>
+    </div>
+    <div class="form-group">
+      <label ></label>Description</label>
+      <textarea name="description" cols="30" rows="10"  class="form-control">
+
+      </textarea> 
+    </div>
+    
+         {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

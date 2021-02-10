@@ -5,28 +5,28 @@
 {% block body %}
 
 
-<h1>This is admin pannel</h1>
+<h1 class="text-center">This is admin pannel</h1>
 <div class="container">
     <div class="row mt-5">
       <div class="col-sm">
         <!-- One of three columns -->
-        <a href="#" ><h4 class="text-dark">Pending Notes</h4></a>
-        <h2 class="text-primary">5</h2>
+        <a href="{% url 'pending_notes' %}" ><h4 class="text-dark">Pending Notes</h4></a>
+        <h2 class="text-primary">{{pn}}</h2>
       </div>
       <div class="col-sm">
         <!-- One of three columns -->
-        <a href="#" ><h4 class="text-dark">Accepted Notes</h4></a>
-        <h2 class="text-primary">5</h2>
+        <a href="{% url 'accepted_notes' %}" ><h4 class="text-dark">Accepted Notes</h4></a>
+        <h2 class="text-primary">{{an}}</h2>
       </div>
       <div class="col-sm">
         <!-- One of three columns -->
-        <a href="#" ><h4 class="text-dark">Rejected Notes</h4></a>
-        <h2 class="text-primary">5</h2>
+        <a href="{% url 'rejected_notes' %}" ><h4 class="text-dark">Rejected Notes</h4></a>
+        <h2 class="text-primary">{{rn}}</h2>
       </div>
       <div class="col-sm">
         <!-- One of three columns -->
-        <a href="#" ><h4 class="text-dark">All Notes Notes</h4></a>
-        <h2 class="text-primary">5</h2>
+        <a href="{% url 'viewallnotes' %}" ><h4 class="text-dark">All Notes Notes</h4></a>
+        <h2 class="text-primary">{{alln}}</h2>
       </div>
     </div>
   </div>

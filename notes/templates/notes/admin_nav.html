@@ -27,14 +27,14 @@
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">View Notes</a>
 
           <div class="dropdown-menu">
-              <a href="" class="dropdown-item">Pending</a>
-              <a href="" class="dropdown-item">Accepted</a>
-              <a href="" class="dropdown-item">Rejected</a>
-              <a href="" class="dropdown-item">All Notes</a>
+              <a href="{% url 'pending_notes' %}" class="dropdown-item">Pending</a>
+              <a href="{% url 'accepted_notes' %}" class="dropdown-item">Accepted</a>
+              <a href="{% url 'rejected_notes' %}" class="dropdown-item">Rejected</a>
+              <a href="{% url 'all_notes' %}" class="dropdown-item">All Notes</a>
           </div>
         </li>
         <li class="nav-item mr-3">
-          <a class="nav-link" href="#">View Users</a>
+          <a class="nav-link" href="{% url 'view_users' %}">View Users</a>
         </li>
           
           <button type="button" class="btn btn-success mr-3" >

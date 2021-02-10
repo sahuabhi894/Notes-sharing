@@ -5,6 +5,65 @@
 {% block body %}
 
 
-<h1>This is Profile</h1>
+<h1 class="text-center">This is Profile</h1>
+<div class="container mt-5" style="border: 1cm;">
+    <div class="row ">
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <h4 class="text-dark">Full Name</h4>
+        
+      </div>
+      <div class="col-sm" style="text-transform: capitalize">
+        <b>{{data.user.first_name}} {{data.user.last_name}}  </b>
+        
+        
+      </div>
+     
+    </div>
+    <hr>
+    <div class="row ">
+        <div class="col-sm">
+          <!-- One of three columns -->
+          <h4 class="text-dark">Email Id</h4>
+          
+        </div>
+        <div class="col-sm" >
+          <b>{{data.user.email}}  </b>
+          
+          
+        </div>
+       
+      </div>
+<hr>
+      <div class="row ">
+        <div class="col-sm">
+          <!-- One of three columns -->
+          <h4 class="text-dark">Role</h4>
+          
+        </div>
+        <div class="col-sm" >
+          <b>{{data.role}}  </b>
+          
+          
+        </div>
+       
+      </div>
+<hr>
+      <div class="row ">
+        <div class="col-sm">
+          <!-- One of three columns -->
+          <h4 class="text-dark">Branch</h4>
+          
+        </div>
+        <div class="col-sm" >
+          <b>{{data.branch}}  </b>
+          
+          
+        </div>
+       
+      </div>
+      <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-3">Edit Profile</a>
+  </div>
+
 
 {% endblock %}
