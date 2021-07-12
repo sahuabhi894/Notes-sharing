@@ -20,23 +20,26 @@ def handleLogin(request):
         u=request.POST['loginadminname']
         p=request.POST['loginadminpassword']
         user = authenticate(username=u, password=p)
+        error=""
         try:
 
             if user.is_superuser:
                 login(request,user)
                 messages.success(request, "Successfully Logged In")
                 return redirect("admin_home")
+                error="no"
 
             elif user is not None:
                 login(request,user)
                 messages.success(request, "Successfully Logged In")
                 return redirect("profile")
+                error="no"
         
         except:
                 error="yes"
                 messages.error(request, "Invalid credentials! Please try again")
                 return redirect("index")
-
+    
     return HttpResponse("404- Not found")
    
 
