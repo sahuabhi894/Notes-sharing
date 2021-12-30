@@ -3,67 +3,42 @@
 {% load static %}
 
 {% block body %}
-
-
-<h1 class="text-center">This is Profile</h1>
+<h1 class="text-center mt-3">This is Profile</h1>
 <div class="container mt-5" style="border: 1cm;">
-    <div class="row ">
-      <div class="col-sm">
-        <!-- One of three columns -->
-        <h4 class="text-dark">Full Name</h4>
-        
-      </div>
-      <div class="col-sm" style="text-transform: capitalize">
-        <b>{{data.user.first_name}} {{data.user.last_name}}  </b>
-        
-        
-      </div>
-     
-    </div>
-    <hr>
-    <div class="row ">
-        <div class="col-sm">
-          <!-- One of three columns -->
-          <h4 class="text-dark">Email Id</h4>
-          
-        </div>
-        <div class="col-sm" >
-          <b>{{data.user.email}}  </b>
-          
-          
-        </div>
-       
-      </div>
-<hr>
-      <div class="row ">
-        <div class="col-sm">
-          <!-- One of three columns -->
-          <h4 class="text-dark">Role</h4>
-          
-        </div>
-        <div class="col-sm" >
-          <b>{{data.role}}  </b>
-          
-          
-        </div>
-       
-      </div>
-<hr>
-      <div class="row ">
-        <div class="col-sm">
-          <!-- One of three columns -->
-          <h4 class="text-dark">Branch</h4>
-          
-        </div>
-        <div class="col-sm" >
-          <b>{{data.branch}}  </b>
-          
-          
-        </div>
-       
-      </div>
-      <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-3">Edit Profile</a>
-  </div>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Full Name</th>
+      
+      <th scope="col" >{{data.user.first_name}} {{data.user.last_name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- <th scope="row">1</th> -->
+      <td>Email Id</td>
+      
+      <td>{{data.user.email}}</td>
+    </tr>
+    <tr>
+      <!-- <th scope="row">2</th> -->
+      <td>Role</td>
+      
+      <td>{{data.role}}</td>
+    </tr>
+    <tr>
+      <!-- <th scope="row">3</th> -->
+      <td>Branch</td>
+      
+      <td>{{data.branch}}</td>
+    </tr>
+  </tbody>
+</table>
+<a href="{% url 'edit_profile' %}" class="btn btn-primary mt-1 align-middle">Edit Profile</a>
+</div>
+  
 
 
 {% endblock %}

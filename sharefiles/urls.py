@@ -42,5 +42,10 @@ urlpatterns = [
  path('all_notes',all_notes, name='all_notes'),
   path('delete_notes/<int:pid>',delete_notes, name='delete_notes'),
   path('viewallnotes',viewallnotes, name='viewallnotes'),
+  path('first_year',first_year,name='first_year'),
+  path('second_year',second_year,name='second_year'),
+  path('third_year',third_year,name='third_year'),
+  path('forth_year',forth_year,name='forth_year'),
+  path('other',other,name='other'),
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

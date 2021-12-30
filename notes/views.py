@@ -159,9 +159,10 @@ def upload_notes(request):
         s=request.POST['subject']
         n=request.FILES['notesfile']
         d=request.POST['description']
+        y=request.POST['year']
         u =User.objects.filter(username=request.user.username).first()
 
-        Notes.objects.create(user=u,uploadingdate=date.today(),branch=b,subject=s,notesfile=n,description=d,status='pending')    
+        Notes.objects.create(user=u,uploadingdate=date.today(),branch=b,subject=s,notesfile=n,description=d,year=y,status='pending')    
         
     return render(request,'notes/upload_notes.html')
 
@@ -259,3 +260,39 @@ def viewallnotes(request):
     notes = Notes.objects.all()
     d={'notes':notes}
     return render(request,'notes/viewallnotes.html',d)
+
+
+def first_year(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year")
+    d={'notes':notes}
+    return render(request,'notes/first_year.html',d)
+
+def second_year(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year")
+    d={'notes':notes}
+    return render(request,'notes/second_year.html',d)
+
+def third_year(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year")
+    d={'notes':notes}
+    return render(request,'notes/third_year.html',d)
+
+def forth_year(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year")
+    d={'notes':notes}
+    return render(request,'notes/forth_year.html',d)
+
+def other(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "Other")
+    d={'notes':notes}
+    return render(request,'notes/other.html',d)

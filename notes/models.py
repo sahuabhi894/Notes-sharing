@@ -20,6 +20,7 @@ class Notes(models.Model):
     notesfile =models.FileField(null=True)
     filetype =models.CharField(max_length=30)
     description =models.CharField(max_length=200,null=True)
+    year =models.CharField(max_length=30,null=True)
     status =models.CharField(max_length=30)
     
 
