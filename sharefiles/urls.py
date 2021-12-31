@@ -47,5 +47,13 @@ urlpatterns = [
   path('third_year',third_year,name='third_year'),
   path('forth_year',forth_year,name='forth_year'),
   path('other',other,name='other'),
+  path('cse1',cse1,name='cse1'),
+  path('ece1',ece1,name='ece1'),
+  path('cse2',cse2,name='cse2'),
+  path('ece2',ece2,name='ece2'),
+  path('cse3',cse3,name='cse3'),
+  path('ece3',ece3,name='ece3'),
+  path('cse4',cse4,name='cse4'),
+  path('ece4',ece4,name='ece4'),
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

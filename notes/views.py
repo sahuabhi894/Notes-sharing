@@ -296,3 +296,59 @@ def other(request):
     notes = Notes.objects.filter(year= "Other")
     d={'notes':notes}
     return render(request,'notes/other.html',d)
+
+def cse1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch= "Computer Science")
+    d={'notes':notes}
+    return render(request,'notes/cse1.html',d)
+
+def ece1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication")
+    d={'notes':notes}
+    return render(request,'notes/ece1.html',d)
+
+def cse2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch= "Computer Science")
+    d={'notes':notes}
+    return render(request,'notes/cse2.html',d)
+
+def ece2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication")
+    d={'notes':notes}
+    return render(request,'notes/ece2.html',d)
+
+def cse3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch= "Computer Science")
+    d={'notes':notes}
+    return render(request,'notes/cse3.html',d)
+
+def ece3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication")
+    d={'notes':notes}
+    return render(request,'notes/ece3.html',d)
+
+def cse4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch= "Computer Science")
+    d={'notes':notes}
+    return render(request,'notes/cse4.html',d)
+
+def ece4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication")
+    d={'notes':notes}
+    return render(request,'notes/ece4.html',d)
