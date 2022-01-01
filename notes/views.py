@@ -97,7 +97,7 @@ def handleSignUp(request):
         # Create the user
         user = User.objects.create_user(username=username, email=email, password=pass1,first_name= fname,last_name= lname)
         Signup.objects.create(user=user,branch=branch,role=role)
-        messages.success(request, " Your iCoder has been successfully created")
+        messages.success(request, " Your account has been created successfully ")
         return redirect('index')
 
     else:

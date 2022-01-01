@@ -44,6 +44,11 @@
 
 
   <div id="happyNewYear-div" style="margin-top: 60px;">
+    {% if messages %}
+        {% for message in messages %}
+                <div id="msg" class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
     <h1 >Happy New Year!</h1>
     <div>
       <span class="days"></span><div class="smalltext">Days</div>
@@ -128,6 +133,7 @@
         </div>
       </div>
     </div>
+    
     </div>
     <!-- ................................. -->
     <!-- {% ifequal error "no" %}
@@ -175,6 +181,7 @@
     </form>
     
           </div>
+          
           <!-- .............................................. -->
 
 

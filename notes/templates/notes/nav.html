@@ -128,6 +128,13 @@
   }, "slow");
 });
   </script>
+  <script>
+    window.setTimeout(function() {
+     $("#msg").fadeTo(400, 0).slideUp(400, function(){
+       $(this).remove();
+    });
+  }, 3000);
+  </script>
 
 </head>
 <style>
