@@ -5,47 +5,36 @@
 {% block body %}
 
 
+<h1 class="text-center">All Notes</h1>
+<div class="container">
+    <div class=" mt-5">
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <a href="{% url 'assignment_ece_3' %}" ><h4 class="mt-5 btn btn-info btn-lg btn-block">Assignments</h4></a>
+        <!-- <h2 class="text-primary">{{pn}}</h2> -->
+      </div>
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <a href="{% url 'book_ece_3' %}" ><h4 class="mt-5 btn btn-info btn-lg btn-block">Books</h4></a>
+        <!-- <h2 class="text-primary">{{an}}</h2> -->
+      </div>
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <a href="{% url 'cl_ece_3' %}" ><h4 class="mt-5 btn btn-info btn-lg btn-block">Class Notes</h4></a>
+        <!-- <h2 class="text-primary">{{an}}</h2> -->
+      </div>
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <a href="{% url 'qp_ece_3' %}" ><h4 class="mt-5 btn btn-info btn-lg btn-block">Question Papers</h4></a>
+        <!-- <h2 class="text-primary">{{an}}</h2> -->
+      </div>
+      <div class="col-sm">
+        <!-- One of three columns -->
+        <a href="{% url 'others_ece_3' %}" ><h4 class="mt-5 btn btn-info btn-lg btn-block">Others</h4></a>
+        <!-- <h2 class="text-primary">{{an}}</h2> -->
+      </div>
+    </div>
+  </div>
 
-<h1 class="text-center">First Year</h1>
-<div class="container mt-5">
-    <table class="table" id="example" style="min-width: fit-content;">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Uploading Date</th>
-            <th scope="col">Uploaded By</th>
-            <th scope="col">Branch</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Download notes</th>
-            <th scope="col">Description</th>
-            <th scope="col">Year</th>
-            <!-- <th scope="col">Status</th> -->
-            <!-- <th scope="col">Action</th> -->
-          </tr>
-        </thead>
-
-        {% for i in notes %}
-        <tbody>
-          <tr>
-            <th scope="row">{{forloop.counter }}</th>
-            <td>{{i.uploadingdate}}</td>
-            <td>{{i.user.username}}</td>
-            <td>{{i.branch}}</td>
-            <td>{{i.subject}}</td>
-            <td><a href="{{i.notesfile.url}}" download>Download</a></td>
-            <td>{{i.description}}</td>
-            <td>{{i.year}}</td>
-            <!-- <td>{{i.status}}</td> -->
-            <!-- <td><a href="{% url 'assign_status' i.id %}" class="btn btn-success" >Assign Status</a></td> -->
-            <!-- <td><a href="{% url 'delete_notes' i.id %}" class="btn btn-danger" onclick="return confirm('Are You Sure')">Delete</a></td> -->
-            
-          </tr>
-         
-        </tbody>
-        {% endfor %}
-      </table>
-      
-
-</div>
 
 {% endblock %}

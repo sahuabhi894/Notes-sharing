@@ -160,9 +160,10 @@ def upload_notes(request):
         n=request.FILES['notesfile']
         d=request.POST['description']
         y=request.POST['year']
+        nt=request.POST['notestype']
         u =User.objects.filter(username=request.user.username).first()
 
-        Notes.objects.create(user=u,uploadingdate=date.today(),branch=b,subject=s,notesfile=n,description=d,year=y,status='pending')    
+        Notes.objects.create(user=u,uploadingdate=date.today(),branch=b,subject=s,notesfile=n,description=d,year=y,notestype=nt,status='pending')    
         
     return render(request,'notes/upload_notes.html')
 
@@ -293,7 +294,7 @@ def forth_year(request):
 def other(request):
     if not request.user.is_authenticated:
            return redirect('index')
-    notes = Notes.objects.filter(year= "Other")
+    notes = Notes.objects.filter(year= "Other" , notestype="Others")
     d={'notes':notes}
     return render(request,'notes/other.html',d)
 
@@ -352,3 +353,287 @@ def ece4(request):
     notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication")
     d={'notes':notes}
     return render(request,'notes/ece4.html',d)
+
+def assignment_cse_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Computer Science" , notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'FirstYear/assignment_cse_1.html',d)
+
+def assignment_ece_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication" ,notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'FirstYear/assignment_ece_1.html',d)
+
+def book_cse_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Computer Science" , notestype="Book")
+    d={'notes':notes}
+    return render(request,'FirstYear/book_cse_1.html',d)
+
+def book_ece_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication" ,notestype="Book")
+    d={'notes':notes}
+    return render(request,'FirstYear/book_ece_1.html',d)
+
+def cl_cse_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Computer Science" , notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'FirstYear/cl_cse_1.html',d)
+
+def cl_ece_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication" ,notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'FirstYear/cl_ece_1.html',d)
+
+def others_cse_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Computer Science" , notestype="Others")
+    d={'notes':notes}
+    return render(request,'FirstYear/others_cse_1.html',d)
+
+def others_ece_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication" ,notestype="Others")
+    d={'notes':notes}
+    return render(request,'FirstYear/others_ece_1.html',d)
+
+def qp_cse_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Computer Science" , notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'FirstYear/qp_cse_1.html',d)
+
+def qp_ece_1(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "1st Year" , branch = "Electronics And Communication" ,notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'FirstYear/qp_ece_1.html',d)
+
+# ...................................................................................................................
+def assignment_cse_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Computer Science" , notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'SecondYear/assignment_cse_2.html',d)
+
+def assignment_ece_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication" ,notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'SecondYear/assignment_ece_2.html',d)
+
+def book_cse_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Computer Science" , notestype="Book")
+    d={'notes':notes}
+    return render(request,'SecondYear/book_cse_2.html',d)
+
+def book_ece_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication" ,notestype="Book")
+    d={'notes':notes}
+    return render(request,'SecondYear/book_ece_2.html',d)
+
+def cl_cse_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Computer Science" , notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'SecondYear/cl_cse_2.html',d)
+
+def cl_ece_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication" ,notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'SecondYear/cl_ece_2.html',d)
+
+def others_cse_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Computer Science" , notestype="Others")
+    d={'notes':notes}
+    return render(request,'SecondYear/others_cse_2.html',d)
+
+def others_ece_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication" ,notestype="Others")
+    d={'notes':notes}
+    return render(request,'SecondYear/others_ece_2.html',d)
+
+def qp_cse_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Computer Science" , notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'SecondYear/qp_cse_2.html',d)
+
+def qp_ece_2(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "2nd Year" , branch = "Electronics And Communication" ,notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'SecondYear/qp_ece_2.html',d)
+
+# ...............................................................................................................................
+
+def assignment_cse_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Computer Science" , notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'ThirdYear/assignment_cse_3.html',d)
+
+def assignment_ece_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication" ,notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'ThirdYear/assignment_ece_3.html',d)
+
+def book_cse_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Computer Science" , notestype="Book")
+    d={'notes':notes}
+    return render(request,'ThirdYear/book_cse_3.html',d)
+
+def book_ece_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication" ,notestype="Book")
+    d={'notes':notes}
+    return render(request,'ThirdYear/book_ece_3.html',d)
+
+def cl_cse_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Computer Science" , notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'ThirdYear/cl_cse_3.html',d)
+
+def cl_ece_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication" ,notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'ThirdYear/cl_ece_3.html',d)
+
+def others_cse_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Computer Science" , notestype="Others")
+    d={'notes':notes}
+    return render(request,'ThirdYear/others_cse_3.html',d)
+
+def others_ece_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication" ,notestype="Others")
+    d={'notes':notes}
+    return render(request,'ThirdYear/others_ece_3.html',d)
+
+def qp_cse_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Computer Science" , notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'ThirdYear/qp_cse_3.html',d)
+
+def qp_ece_3(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "3rd Year" , branch = "Electronics And Communication" ,notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'ThirdYear/qp_ece_3.html',d)
+
+# ................................................................................................................................
+def assignment_cse_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Computer Science" , notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'FourthYear/assignment_cse_4.html',d)
+
+def assignment_ece_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Assignment")
+    d={'notes':notes}
+    return render(request,'FourthYear/assignment_ece_4.html',d)
+
+def book_cse_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Computer Science" , notestype="Book")
+    d={'notes':notes}
+    return render(request,'FourthYear/book_cse_4.html',d)
+
+def book_ece_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Book")
+    d={'notes':notes}
+    return render(request,'FourthYear/book_ece_4.html',d)
+
+def cl_cse_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Computer Science" , notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'FourthYear/cl_cse_4.html',d)
+
+def cl_ece_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Class Notes")
+    d={'notes':notes}
+    return render(request,'FourthYear/cl_ece_4.html',d)
+
+def others_cse_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Computer Science" , notestype="Others")
+    d={'notes':notes}
+    return render(request,'FourthYear/others_cse_4.html',d)
+
+def others_ece_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Others")
+    d={'notes':notes}
+    return render(request,'FourthYear/others_ece_4.html',d)
+
+def qp_cse_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Computer Science" , notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'FourthYear/qp_cse_4.html',d)
+
+def qp_ece_4(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Question Paper")
+    d={'notes':notes}
+    return render(request,'FourthYear/qp_ece_4.html',d)

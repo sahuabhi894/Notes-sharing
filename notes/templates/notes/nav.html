@@ -9,6 +9,126 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- <meta name="viewport" content="width=960">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://peter.build/newyears/js/flipclock.js"></script>
+<script src="https://peter.build/newyears/js/newyear.js?v1.01"></script>
+<link rel="stylesheet" href="https://peter.build/newyears/css/style.css">
+<link rel="stylesheet" href="https://peter.build/newyears/css/flipclock.css">
+<link rel="stylesheet" href="https://peter.build/newyears/css/animate.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great+Vibes"> -->
+
+<meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      font-weight: 100;
+    }
+    
+    h1 {
+      color: #20c1dd;
+      font-weight: 100;
+      font-size: 40px;
+      margin: 40px 0px 20px;
+    }
+    
+    #happyNewYear-div {
+      font-family: sans-serif;
+      color: #fff;
+      display: inline-block;
+      font-weight: 100;
+      text-align: center;
+      font-size: 30px;
+    }
+    
+    #happyNewYear-div > div {
+      padding: 10px;
+      border-radius: 3px;
+      background: #5aa628;
+      display: inline-block;
+    }
+    
+    #happyNewYear-div div > span {
+      padding: 15px;
+      border-radius: 3px;
+      background: #20c1dd;
+      display: inline-block;
+    }
+    
+    .smalltext {
+      padding-top: 5px;
+      font-size: 16px;
+    }
+  </style>
+  <script data-require="jquery" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  <script>
+    $(function() {
+      var initializeWatchClock = function(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+
+        var updateWatchClock = function() {
+          var t = getTimeRemaining(endtime);
+
+          daysSpan.innerHTML = t.days;
+          hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+          minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+          secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+          if (t.total <= 0) {
+            clearInterval(interval);
+          }
+        }
+
+        //Update clock Watch!
+        updateWatchClock();
+        var interval = setInterval(updateWatchClock, 1000);
+      };
+
+      var getTimeRemaining = function(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+        return {
+          'total': t,
+          'days': days,
+          'hours': hours,
+          'minutes': minutes,
+          'seconds': seconds
+        };
+      };
+
+      //Calculation for happy new year!
+      nextYear = new Date(new Date().getFullYear() + 1, 0, 1);
+      today = Date.parse(new Date());
+      newYearDay = new Date(nextYear);
+      remaningDT = newYearDay - today;
+      remanning = new Date(Date.parse(new Date()) + remaningDT);
+
+      initializeWatchClock('happyNewYear-div', remanning);
+    });
+  </script>
+
+  <script>
+    $(function(){
+  $("h1").animate({
+    "margin-left": "25px"
+  }, "slow");
+});
+  </script>
+
 </head>
 <style>
   * {
