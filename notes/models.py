@@ -7,6 +7,11 @@ class Signup(models.Model):
     branch =models.CharField(max_length=30,null=True)
     role =models.CharField(max_length=15,null=True)
 
+    auth_token = models.CharField(max_length=100)
+    is_verified = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
     def __str__(self):
         return self.user.username
 
@@ -23,6 +28,16 @@ class Notes(models.Model):
     year =models.CharField(max_length=30,null=True)
     notestype=models.CharField(max_length=30,null=True)
     status =models.CharField(max_length=30)
+
+class Contact(models.Model):
+     sno= models.AutoField(primary_key=True)
+     name= models.CharField(max_length=255)
+     email= models.CharField(max_length=100)
+     content= models.TextField()
+     timeStamp=models.DateTimeField(auto_now_add=True, blank=True)
+
+     def __str__(self):
+          return "Message from " + self.name + ' - ' + self.email
     
 
     

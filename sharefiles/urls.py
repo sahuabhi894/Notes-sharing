@@ -25,6 +25,14 @@ urlpatterns = [
     path('', index, name="index"),
     path('login',handleLogin, name="handleLogin"),
     path('signup', handleSignUp, name="handleSignUp"),
+    path('contact',contact, name="contact"),
+    path('contact_me',contact_me, name="contact_me"),
+
+    path('token' , token_send , name="token_send"),
+    path('success' , success , name='success'),
+    path('/verify/<auth_token>' , verify , name="verify"),
+    path('error' , error_page , name="error"),
+
     path('admin_home',admin_home,name = 'admin_home'),
     path('profile',profile,name = 'profile'),
     path('logout/', handelLogout, name="handleLogout"),

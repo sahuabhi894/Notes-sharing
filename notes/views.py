@@ -5,6 +5,11 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages 
 from datetime import date
 
+import uuid
+from django.conf import settings
+from django.core.mail import send_mail
+from notes.models import Signup
+
 # Create your views here.
 def about(request):
     return render(request , 'notes/about.html')
@@ -14,12 +19,37 @@ def about(request):
 def index(request):
     return render(request , 'notes/index.html')
 
+def contact(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        content =request.POST['content']
+        contact=Contact(name=name, email=email, content=content)
+        contact.save()
+        return redirect('index')
+    return render(request, "notes/index.html")
+
+def contact_me(request):
+    if not request.user.is_authenticated:
+           return redirect('index')
+    users = Contact.objects.all()
+    d={'users':users}
+    return render(request,'notes/contact_me.html',d)
+
 
 def handleLogin(request):
     if request.method == 'POST':
         u=request.POST['loginadminname']
         p=request.POST['loginadminpassword']
         user = authenticate(username=u, password=p)
+        # new
+        user_obj = User.objects.filter(username = u).first()
+        profile_obj = Signup.objects.filter(user = user_obj ).first()
+        if user_obj is None:
+            messages.success(request, 'User not found.')
+            return redirect('index')
+        
+        # ..
         error=""
         try:
 
@@ -29,11 +59,18 @@ def handleLogin(request):
                 return redirect("admin_home")
                 error="no"
 
+            elif not profile_obj.is_verified:
+                messages.success(request, 'Profile is not verified check your mail.')
+                return redirect('index')
+
             elif user is not None:
                 login(request,user)
                 messages.success(request, "Successfully Logged In")
                 return redirect("profile")
                 error="no"
+
+            
+                
         
         except:
                 error="yes"
@@ -95,14 +132,70 @@ def handleSignUp(request):
              return redirect('index')
         
         # Create the user
-        user = User.objects.create_user(username=username, email=email, password=pass1,first_name= fname,last_name= lname)
-        Signup.objects.create(user=user,branch=branch,role=role)
-        messages.success(request, " Your account has been created successfully ")
+        try:
+            if User.objects.filter(username = username).first():
+                messages.success(request, 'Username has taken.')
+                return redirect('index')
+
+            if User.objects.filter(email = email).first():
+                messages.success(request, 'Email has taken.')
+                return redirect('index')
+
+            user = User.objects.create_user(username=username, email=email, password=pass1,first_name= fname,last_name= lname)
+            auth_token = str(uuid.uuid4())
+            profile_obj = Signup.objects.create(user=user,branch=branch,role=role,auth_token = auth_token)
+            send_mail_after_registration(email , auth_token)
+            messages.success(request, "A mail has been sent please verify! ")
+            return redirect('index')
+
+        except Exception as e:
+            print(e)
+
+    # return redirect('index')
+    return render(request,'notes/index.html',d)
+        # return HttpResponse("404 - Not found")
+        
+# **********************************************************************************
+def success(request):
+    return render(request , 'auth/success.html')
+
+
+def token_send(request):
+    return render(request , 'auth/token_send.html')
+
+def verify(request , auth_token):
+    try:
+        profile_obj = Signup.objects.filter(auth_token = auth_token).first()
+    
+
+        if profile_obj:
+            if profile_obj.is_verified:
+                messages.success(request, 'Your account is already verified.')
+                return redirect('index')
+                
+            profile_obj.is_verified = True
+            profile_obj.save()
+            messages.success(request, 'Your account has been verified.')
+            return redirect('index')
+        else:
+            return redirect('auth/error')
+    except Exception as e:
+        print(e)
         return redirect('index')
 
-    else:
-        return HttpResponse("404 - Not found")
+def error_page(request):
+    return  render(request , 'auth/error.html')
 
+def send_mail_after_registration(email , token):
+    subject = 'Your accounts need to be verified'
+    message = f'Hi paste the link to verify your account http://127.0.0.1:8000//verify/{token}'
+    email_from = settings.DEFAULT_FROM_EMAIL
+    recipient_list = [email]
+    send_mail(subject, message , email_from ,recipient_list )
+
+
+# ***************************************************************************************
+ 
 
 
 def changepassword(request):
@@ -637,3 +730,7 @@ def qp_ece_4(request):
     notes = Notes.objects.filter(year= "4th Year" , branch = "Electronics And Communication" ,notestype="Question Paper")
     d={'notes':notes}
     return render(request,'FourthYear/qp_ece_4.html',d)
+
+
+  
+    

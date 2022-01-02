@@ -64,67 +64,191 @@
     .smalltext {
       padding-top: 5px;
       font-size: 16px;
+
+      
+      
     }
+    /* ************************************************Contact Us **************************************************************************************************/
+    body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(50, 50, 50);
+  padding-bottom: 10px;
+}
+
+#contact{
+  width: 100%;
+  margin-top: 0px;
+  
+}
+
+.section-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 0;
+  /* font: 100 60px 'Oswald', sans-serif; */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  /* margin-top: 0; */
+  padding: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: relative;
+  max-width: 840px;
+}
+
+/* Left contact page */
+.form-horizontal {
+  /*float: left;*/
+  max-width: 400px;
+  font-family: 'Lato';
+  font-weight: 400;
+}
+
+.form-control, 
+textarea {
+  max-width: 400px;
+  background-color: #000;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.send-button {
+  margin-top: 15px;
+  height: 34px;
+  width: 400px;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+}
+
+.alt-send-button {
+  width: 400px;
+  height: 34px;
+  transition: all .2s ease-in-out;
+}
+
+.send-text {
+  display: block;
+  margin-top: 10px;
+  font: 700 12px 'Lato', sans-serif;
+  letter-spacing: 2px;
+}
+
+.alt-send-button:hover {
+  transform: translate3d(0px, -29px, 0px);
+}
+
+
+
+.copyright {
+  font: 200 14px 'Oswald', sans-serif;
+  color: #555;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+hr {
+  border-color: rgba(255,255,255,.6);
+}
+
+/* Begin Media Queries*/
+@media screen and (max-width: 850px) {
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .direct-contact-container, .form-horizontal {
+    margin: 0 auto;
+  }  
+  
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 300px;
+  }    
+  .social-media-list li {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+  }
+  .social-media-list li:after {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-width: 569px) {
+
+  .direct-contact-container, .form-wrapper {
+    float: none;
+    margin: 0 auto;
+  }  
+  .form-control, textarea {
+    
+    margin: 0 auto;
+  }
+ 
+  
+  .name, .email, textarea {
+    width: 280px;
+  } 
+  
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 280px;
+  }  
+  .social-media-list {
+    left: 0;
+  }
+  .social-media-list li {
+    height: 55px;
+    width: 55px;
+    line-height: 55px;
+    font-size: 2rem;
+  }
+  .social-media-list li:after {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+  }
+  
+}
+
+@media screen and (max-width: 410px) {
+  .send-button {
+    width: 99%;
+  }
+}
+
+/* *********************************************************************************************************************************************************** */
+
   </style>
-  <script data-require="jquery" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
   <script>
-    $(function() {
-      var initializeWatchClock = function(id, endtime) {
-        var clock = document.getElementById(id);
-        var daysSpan = clock.querySelector('.days');
-        var hoursSpan = clock.querySelector('.hours');
-        var minutesSpan = clock.querySelector('.minutes');
-        var secondsSpan = clock.querySelector('.seconds');
+    document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.elements.name.value = '';
+    e.target.elements.email.value = '';
+    e.target.elements.message.value = '';
+  });
 
-        var updateWatchClock = function() {
-          var t = getTimeRemaining(endtime);
-
-          daysSpan.innerHTML = t.days;
-          hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-          minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-          secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-          if (t.total <= 0) {
-            clearInterval(interval);
-          }
-        }
-
-        //Update clock Watch!
-        updateWatchClock();
-        var interval = setInterval(updateWatchClock, 1000);
-      };
-
-      var getTimeRemaining = function(endtime) {
-        var t = Date.parse(endtime) - Date.parse(new Date());
-        var seconds = Math.floor((t / 1000) % 60);
-        var minutes = Math.floor((t / 1000 / 60) % 60);
-        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-        var days = Math.floor(t / (1000 * 60 * 60 * 24));
-
-        return {
-          'total': t,
-          'days': days,
-          'hours': hours,
-          'minutes': minutes,
-          'seconds': seconds
-        };
-      };
-
-      //Calculation for happy new year!
-      nextYear = new Date(new Date().getFullYear() + 1, 0, 1);
-      today = Date.parse(new Date());
-      newYearDay = new Date(nextYear);
-      remaningDT = newYearDay - today;
-      remanning = new Date(Date.parse(new Date()) + remaningDT);
-
-      initializeWatchClock('happyNewYear-div', remanning);
-    });
   </script>
+  <!-- *********************************************************************************************************************************** -->
+  <script data-require="jquery" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+  
 
   <script>
     $(function(){
   $("h1").animate({
-    "margin-left": "25px"
+    "margin-left": "0px"
   }, "slow");
 });
   </script>
@@ -145,6 +269,7 @@
 body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 17px;
+  margin-top: 50px;
 }
 
 .container1 {
@@ -157,21 +282,6 @@ body {
 .container1 img {vertical-align: middle;
 opacity: 0.9;}
 
-.container1 .content {
-  position: absolute;
-  text-align: center;
-  top: 100px;
-   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0); 
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-  font-style: italic;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.content h1{
-  font-size: 90px;
-}
 </style>
 <body>
 
@@ -190,7 +300,7 @@ opacity: 0.9;}
           <a class="nav-link" href="#">About</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link mr-3" href="#">Contact </a>
+          <a class="nav-link mr-3" href="#contact">Contact </a>
         </li>
         
         <button type="button" class="btn btn-success mr-3" data-toggle="modal" data-target="#loginModal">

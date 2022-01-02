@@ -1,0 +1,48 @@
+{% extends 'notes/admin_nav.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
+<h1 class="text-center">Users </h1>
+<div class="container mt-5">
+    <table class="table" id="example">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Name</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Querry</th>
+          </tr>
+        </thead>
+
+        {% for i in users %}
+        <tbody>
+          <tr>
+            <th scope="row">{{forloop.counter }}</th>
+            <td style="text-transform: capitalize;">{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.content}}</td>
+          </tr>
+         
+        </tbody>
+        {% endfor %}
+      </table>
+      
+
+</div>
+
+{% endblock %}
